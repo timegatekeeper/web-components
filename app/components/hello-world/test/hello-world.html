@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mocha Tests</title>
+    <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
+    <link rel="import" href="../hello-world.html" />
+</head>
+<body>
+<div id="mocha"></div>
+<hello-world></hello-world>
+
+<!--<script src="https://cdn.rawgit.com/jquery/jquery/2.1.4/dist/jquery.min.js"></script>-->
+<script src="http://chaijs.com/chai.js"></script>
+<script src="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.js"></script>
+
+<script>mocha.setup('bdd')</script>
+<script>
+    var expect = chai.expect;
+    describe('hello-world web component', function() {
+        it('says hello world', function(){
+            expect(document.querySelector('hello-world').innerHTML).to.be.equal("Hello World!");
+        });
+    });
+</script>
+<script>
+    mocha.checkLeaks();
+    mocha.globals(['jQuery']);
+    mocha.run();
+</script>
+</body>
+</html>
